@@ -32,15 +32,24 @@ tasks {
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     }
 
-//    publishing{
-//        publications{
-//            create<MavenPublication>("mavenJava"){
-//                groupId = "com.github.luiox"
-//                artifactId = "morpher-api"
-//                version = "1.6"
-//            }
+//    repositories {
+//        maven {
+//            //当前项目根目录
+//            url = uri("$rootDir/repo")
 //        }
 //    }
+
+    publishing{
+        publications{
+            create<MavenPublication>("mavenJava"){
+                groupId = "com.github.luiox"
+                artifactId = "morpher-api"
+                version = "1.6"
+
+                artifact(jar)
+            }
+        }
+    }
 }
 
 

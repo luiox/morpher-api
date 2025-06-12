@@ -38,11 +38,3 @@ allprojects {
     }
 }
 
-fun generateVersionStr(): String {
-    val currentDate = SimpleDateFormat("yyMMdd").format(Date())
-    return "v${version}_b${currentDate}"
-}
-
-fun generateNameWithVersion(baseName: String): String {
-    return "${baseName}-${generateVersionStr()}"
-}

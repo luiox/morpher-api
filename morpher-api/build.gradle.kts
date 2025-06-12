@@ -34,12 +34,10 @@ tasks {
 
 //    publishing{
 //        publications{
-//            create<MavenPublication>("MavenPublication"){
+//            create<MavenPublication>("mavenJava"){
 //                groupId = "com.github.luiox"
 //                artifactId = "morpher-api"
 //                version = "1.6"
-//
-//                from(components["java"])
 //            }
 //        }
 //    }

@@ -1,6 +1,7 @@
 plugins {
     id("java")
     id("maven-publish")
+    id("java-library")
 }
 
 description = "A tool that use custom transformer for modifying java bytecode"
@@ -39,14 +40,28 @@ tasks {
 //        }
 //    }
 
-    publishing{
-        publications{
-            create<MavenPublication>("mavenJava"){
+    publishing {
+        publications {
+            create<MavenPublication>("mavenJava") {
                 groupId = "com.github.luiox"
                 artifactId = "morpher-api"
                 version = "1.6"
 
                 artifact(jar)
+//                from(components["java"])
+                pom.withXml {
+                    val dependenciesNode = asNode().appendNode("dependencies")
+
+                    // 遍历项目依赖并添加到 POM
+                    project.configurations.implementation.get().allDependencies.forEach { dep ->
+                        if (dep.group != null) { // 过滤掉没有 group 的依赖（如本地项目）
+                            val dependencyNode = dependenciesNode.appendNode("dependency")
+                            dependencyNode.appendNode("groupId", dep.group)
+                            dependencyNode.appendNode("artifactId", dep.name)
+                            dependencyNode.appendNode("version", dep.version ?: "")
+                        }
+                    }
+                }
             }
         }
     }

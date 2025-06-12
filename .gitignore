@@ -47,10 +47,3 @@ bin/
 output/
 lib/
 
-*.tiny
-
-*.json
-*.jar
-*.jmod
-index.txt
-cache.txt

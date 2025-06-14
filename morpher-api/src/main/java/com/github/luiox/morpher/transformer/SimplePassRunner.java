@@ -1,17 +1,19 @@
 package com.github.luiox.morpher.transformer;
 
-import com.github.luiox.morpher.jar.JarCachesEntry;
 import com.github.luiox.morpher.jar.JarCachesEntryType;
-import com.github.luiox.morpher.util.LogUtil;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.tree.ClassNode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SimplePassRunner implements IPassRunner {
+    private static final Logger logger = LoggerFactory.getLogger(SimplePassRunner.class);
+
     private List<AbstractPass> passes = new ArrayList<>();
 
     public void addPass(AbstractPass pass) {
@@ -45,7 +47,7 @@ public class SimplePassRunner implements IPassRunner {
                         context.deleteClassNode(classNode);
                         context.addClassNode(classNode.name, classWriter.toByteArray());
                     } catch (Exception e) {
-                        LogUtil.printStackTrace(e);
+                        logger.error(e.getMessage());
                     }
                 });
                 context.applyClassModify();
@@ -62,7 +64,7 @@ public class SimplePassRunner implements IPassRunner {
 
                         // 设置当前的类
                         context.currentClass = classNode;
-                        for(var method : classNode.methods){
+                        for (var method : classNode.methods) {
                             methodPass.run(method, context);
                         }
 
@@ -73,7 +75,7 @@ public class SimplePassRunner implements IPassRunner {
                         context.deleteClassNode(classNode);
                         context.addClassNode(classNode.name, classWriter.toByteArray());
                     } catch (Exception e) {
-                        LogUtil.printStackTrace(e);
+                        logger.error(e.getMessage());
                     }
                 });
                 context.applyClassModify();

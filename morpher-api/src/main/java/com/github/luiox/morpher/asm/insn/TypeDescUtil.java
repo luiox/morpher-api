@@ -203,6 +203,7 @@ public class TypeDescUtil {
 
     /**
      * 鉴定一个类名是不是符合jvm要求
+     *
      * @param className 类名
      * @return 是否合法
      */
@@ -214,16 +215,17 @@ public class TypeDescUtil {
 
     /**
      * 判断一个方法名字是否符合jvm要求
+     *
      * @param methodName 方法名
      * @return 是否合法
      */
     public static boolean isValidMethodName(@NotNull String methodName) {
         // <init> 和 <clinit> 是合法的
-        if(methodName.equals("<init>") || methodName.equals("<clinit>")){
+        if (methodName.equals("<init>") || methodName.equals("<clinit>")) {
             return true;
         }
         // 方法名字不能为空
-        if(methodName.isEmpty()){
+        if (methodName.isEmpty()) {
             return false;
         }
         // 也不能包含. ; [ /

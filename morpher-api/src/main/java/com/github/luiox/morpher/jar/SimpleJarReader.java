@@ -1,14 +1,16 @@
 package com.github.luiox.morpher.jar;
 
-import com.github.luiox.morpher.util.LogUtil;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-public class SimpleJarReader implements IJarCachesReader{
+public class SimpleJarReader implements IJarCachesReader {
+    private static final Logger logger = LoggerFactory.getLogger(SimpleJarReader.class);
 
     private final String path;
 
@@ -34,15 +36,14 @@ public class SimpleJarReader implements IJarCachesReader{
                     // 判断一下类型
                     if (JarUtil.isClassFile(entryName)) {
                         cachesEntry.type = JarCachesEntryType.Class;
-                    }
-                    else{
+                    } else {
                         cachesEntry.type = JarCachesEntryType.Resource;
                     }
                     caches.addEntry(cachesEntry);
                 }
             }
         } catch (Exception e) {
-            LogUtil.printStackTrace(e);
+            logger.error(e.getMessage());
         }
     }
 }

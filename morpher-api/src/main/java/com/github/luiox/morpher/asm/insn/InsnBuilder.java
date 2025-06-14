@@ -2,12 +2,13 @@ package com.github.luiox.morpher.asm.insn;
 
 import com.github.luiox.morpher.annotation.API;
 import com.github.luiox.morpher.annotation.APIStatus;
-import com.github.luiox.morpher.util.LogUtil;
 import org.jetbrains.annotations.NotNull;
 import org.objectweb.asm.Handle;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -19,6 +20,7 @@ import java.util.function.Predicate;
  */
 @API(status = APIStatus.Stable)
 public class InsnBuilder {
+    private static final Logger logger = LoggerFactory.getLogger(InsnBuilder.class);
     // 内部换List<AbstractInsnNode>存储的原因是，InsnList不方便直接操作
     // 为了重用AbstractInsnNode的时候，不会因为原先的InsnList导致其prev和next错乱
     // 所有的都需要从原先的InsnList中移除，创建新的InsnList的时候，重新一个一个加进去
@@ -1144,7 +1146,7 @@ public class InsnBuilder {
     public void nameArgs(String desc, String @NotNull ... names) {
         int cnt = Type.getArgumentCount(desc);
         if (cnt != names.length) {
-            LogUtil.error("When naming parameters, the number of parameters does not match, desc is {}, but your args is {}", cnt, names.length);
+            logger.error("When naming parameters, the number of parameters does not match, desc is {}, but your args is {}", cnt, names.length);
             return;
         }
         for (int i = 0; i < cnt; i++) {

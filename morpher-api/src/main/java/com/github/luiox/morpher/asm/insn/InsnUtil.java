@@ -2,7 +2,6 @@ package com.github.luiox.morpher.asm.insn;
 
 import com.github.luiox.morpher.annotation.API;
 import com.github.luiox.morpher.annotation.APIStatus;
-import com.github.luiox.morpher.util.LogUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.objectweb.asm.Handle;
@@ -11,6 +10,8 @@ import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 import org.objectweb.asm.tree.analysis.Frame;
 import org.objectweb.asm.tree.analysis.Value;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 import java.util.function.BiPredicate;
@@ -21,6 +22,8 @@ import static org.objectweb.asm.Opcodes.*;
 
 @API(status = APIStatus.Stable)
 public class InsnUtil {
+    private static final Logger logger = LoggerFactory.getLogger(InsnUtil.class);
+
     // 防止被创建对象
     private InsnUtil() {
 
@@ -754,7 +757,7 @@ public class InsnUtil {
                         new Handle(bsm.getTag(), bsm.getOwner(), bsm.getName(), bsm.getDesc(), bsm.isInterface()), bsmArgs);
             }
             default -> {
-                LogUtil.info("no copy, may be it is a error, insn opcode: {}", insn.getOpcode());
+                logger.info("no copy, may be it is a error, insn opcode: {}", insn.getOpcode());
                 return insn;
             }
         }

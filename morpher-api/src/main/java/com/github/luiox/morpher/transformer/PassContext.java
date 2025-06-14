@@ -6,7 +6,10 @@ import com.github.luiox.morpher.jar.JarCachesEntryType;
 import org.jetbrains.annotations.NotNull;
 import org.objectweb.asm.tree.ClassNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 
@@ -103,7 +106,7 @@ public class PassContext {
     // class name
     private List<String> classDeleteList = new ArrayList<>();
     // class name -> byte[]
-    private Map<String,byte[]> classAddList = new HashMap<>();
+    private Map<String, byte[]> classAddList = new HashMap<>();
 
     public void deleteClassNode(String className) {
         classDeleteList.add(className);

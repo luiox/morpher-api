@@ -1,6 +1,5 @@
 package com.github.luiox.morpher.asm.insn;
 
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.ClassNode;
@@ -69,6 +68,7 @@ public class AccessUtil {
 
     /**
      * 移除访问符
+     *
      * @param access 访问符
      * @param remove 移除的访问符
      * @return 移除后的访问符
@@ -116,6 +116,7 @@ public class AccessUtil {
 
     /**
      * 移除非法的修饰符
+     *
      * @param classNode 类节点
      */
     public static void removeInvalid(@NotNull ClassNode classNode) {

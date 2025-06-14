@@ -1,12 +1,14 @@
 package com.github.luiox.morpher.jar;
 
-import com.github.luiox.morpher.util.LogUtil;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 public class JarUtil {
+    private static final Logger logger = LoggerFactory.getLogger(JarUtil.class);
     public static final int JarMagicNumber = 0xCAFEBABE;
     public static final String ManifestFileName = "META-INF/MANIFEST.MF";
 
@@ -40,7 +42,7 @@ public class JarUtil {
             // 比较读取的魔数与Jar文件的魔数
             return magicNumber == JarMagicNumber;
         } catch (IOException e) {
-            LogUtil.printStackTrace(e);
+            logger.error(e.getMessage());
             return false;
         } finally {
             try {
@@ -49,7 +51,7 @@ public class JarUtil {
                     inputStream.reset();
                 }
             } catch (IOException e) {
-                LogUtil.printStackTrace(e);
+                logger.error(e.getMessage());
             }
         }
     }

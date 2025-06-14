@@ -1,13 +1,15 @@
 package com.github.luiox.morpher.asm.matcher.step;
 
 import com.github.luiox.morpher.asm.matcher.MatchContext;
-import com.github.luiox.morpher.util.LogUtil;
 import org.jetbrains.annotations.NotNull;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.FieldInsnNode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FieldStep implements IMatchStep {
+    private static final Logger logger = LoggerFactory.getLogger(FieldStep.class);
 
     private final int opcode;
     private final String owner;
@@ -15,8 +17,8 @@ public class FieldStep implements IMatchStep {
     private final String desc;
 
     public FieldStep(int opcode, String owner, String name, String desc) {
-        if(opcode > Opcodes.PUTFIELD || opcode < Opcodes.GETSTATIC){
-            LogUtil.error("Invalid FieldInsn opcode {}", opcode);
+        if (opcode > Opcodes.PUTFIELD || opcode < Opcodes.GETSTATIC) {
+            logger.error("Invalid FieldInsn opcode {}", opcode);
         }
         this.opcode = opcode;
         this.owner = owner;

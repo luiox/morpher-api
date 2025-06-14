@@ -1,8 +1,10 @@
 package com.github.luiox.morpher.util.type;
 
-import com.github.luiox.morpher.util.LogUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Result<T, E> {
+    private static final Logger logger = LoggerFactory.getLogger(Result.class);
     private final T value;
     private final E error;
 
@@ -30,7 +32,7 @@ public class Result<T, E> {
     public T unwrap() {
         if (isErr()) {
             if (error instanceof String) {
-                LogUtil.error("Result unwrap occur error, Error: " + error);
+                logger.error("Result unwrap occur error, Error: {}", error);
             }
             throw new RuntimeException("Try to unwrap a error, Error: " + error);
         }
@@ -40,7 +42,7 @@ public class Result<T, E> {
     public T expect(String info) {
         if (isErr()) {
             if (error instanceof String) {
-                LogUtil.error("Result expect occur error, Error: " + error + " Info: " + info);
+                logger.error("Result expect occur error, Error: {} Info: {}", error, info);
             }
             throw new RuntimeException("Try to expect a error, Info: " + info);
         }

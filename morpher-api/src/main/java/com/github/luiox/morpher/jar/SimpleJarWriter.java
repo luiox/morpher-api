@@ -1,7 +1,8 @@
 package com.github.luiox.morpher.jar;
 
-import com.github.luiox.morpher.util.LogUtil;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
@@ -10,7 +11,8 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 import java.util.jar.Manifest;
 
-public class SimpleJarWriter implements IJarCachesWriter{
+public class SimpleJarWriter implements IJarCachesWriter {
+    private static final Logger logger = LoggerFactory.getLogger(SimpleJarReader.class);
 
     private final String path;
 
@@ -28,17 +30,17 @@ public class SimpleJarWriter implements IJarCachesWriter{
                     jos.putNextEntry(jarEntry);
                     byte[] content = entry.content;
                     // 如果是null或者是byte[0]
-                    if (content == null || content.length == 0){
+                    if (content == null || content.length == 0) {
                         // 创建一个空的
                         jos.closeEntry();
-                    }else{
+                    } else {
                         // 写入
                         jos.write(content);
                         jos.closeEntry();
                     }
 
                 } catch (IOException e) {
-                    LogUtil.printStackTrace(e);
+                    logger.error(e.getMessage());
                 }
             });
 
@@ -53,14 +55,14 @@ public class SimpleJarWriter implements IJarCachesWriter{
                     jos.write(byteArrayOutputStream.toByteArray());
                     jos.closeEntry();
                 } catch (Exception e) {
-                    LogUtil.info("setManifest fail! e: ", e.getMessage());
-                    LogUtil.printStackTrace(e);
+                    logger.info("setManifest fail! e: {}", e.getMessage());
+                    logger.error(e.getMessage());
                 }
             }
 
         } catch (IOException e) {
-            LogUtil.info("Failed to write jar file, e: {}", e.getMessage());
-            LogUtil.printStackTrace(e);
+            logger.info("Failed to write jar file, e: {}", e.getMessage());
+            logger.error(e.getMessage());
         }
     }
 }

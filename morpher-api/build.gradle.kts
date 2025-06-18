@@ -1,7 +1,7 @@
 plugins {
     id("java")
     id("maven-publish")
-    id("java-library")
+    //id("java-library")
 }
 
 description = "A tool that use custom transformer for modifying java bytecode"

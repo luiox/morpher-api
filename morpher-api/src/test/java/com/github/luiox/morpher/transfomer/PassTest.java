@@ -2,10 +2,7 @@ package com.github.luiox.morpher.transfomer;
 
 import com.github.luiox.morpher.jar.FullJarCaches;
 import com.github.luiox.morpher.jar.SimpleJarReader;
-import com.github.luiox.morpher.transformer.ClassPass;
-import com.github.luiox.morpher.transformer.MethodPass;
-import com.github.luiox.morpher.transformer.PassContext;
-import com.github.luiox.morpher.transformer.SimplePassRunner;
+import com.github.luiox.morpher.transformer.*;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.objectweb.asm.tree.ClassNode;
@@ -14,7 +11,7 @@ import org.objectweb.asm.tree.MethodNode;
 class DemoClassPass extends ClassPass {
 
     @Override
-    public void run(@NotNull ClassNode classNode, @NotNull PassContext context) {
+    public void run(@NotNull ClassNode classNode, @NotNull IPassContext context) {
         System.out.println("class name : " + classNode.name);
     }
 }
@@ -22,8 +19,8 @@ class DemoClassPass extends ClassPass {
 class DemoMethodPass extends MethodPass {
 
     @Override
-    public void run(@NotNull MethodNode methodNode, @NotNull PassContext context) {
-        System.out.println("class name : " + context.currentClass.name + ", method name : " + methodNode.name);
+    public void run(@NotNull MethodNode methodNode, @NotNull IPassContext context) {
+        System.out.println("class name : " + context.currentClass().name + ", method name : " + methodNode.name);
     }
 }
 

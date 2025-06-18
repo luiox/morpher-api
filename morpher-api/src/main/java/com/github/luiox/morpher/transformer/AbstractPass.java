@@ -11,7 +11,7 @@ public interface AbstractPass {
      *
      * @param context 上下文
      */
-    default void doInitialization(@NotNull PassContext context) {
+    default void doInitialization(@NotNull IPassContext context) {
     }
 
     /**
@@ -19,6 +19,6 @@ public interface AbstractPass {
      *
      * @param context 上下文
      */
-    default void doFinalization(@NotNull PassContext context) {
+    default void doFinalization(@NotNull IPassContext context) {
     }
 }

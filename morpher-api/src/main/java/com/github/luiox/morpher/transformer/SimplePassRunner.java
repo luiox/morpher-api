@@ -21,7 +21,13 @@ public class SimplePassRunner implements IPassRunner {
     }
 
     @Override
-    public void transform(PassContext context) {
+    public void transform(IPassContext ctx) {
+        PassContext context;
+        if(!(ctx instanceof PassContext passContext)){
+            return;
+        }
+        context = passContext;
+
         for (AbstractPass pass : passes) {
             pass.doInitialization(context);
         }
@@ -63,7 +69,7 @@ public class SimplePassRunner implements IPassRunner {
                         System.out.println("index : " + index.getAndIncrement() + ", class path : " + entry.path);
 
                         // 设置当前的类
-                        context.currentClass = classNode;
+                        context.setCurrentClass(classNode);
                         for (var method : classNode.methods) {
                             methodPass.run(method, context);
                         }

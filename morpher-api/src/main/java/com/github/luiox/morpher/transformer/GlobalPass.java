@@ -7,5 +7,5 @@ import org.jetbrains.annotations.NotNull;
  */
 public abstract class GlobalPass implements AbstractPass {
     // 全局级别的pass
-    public abstract void run(@NotNull PassContext context);
+    public abstract void run(@NotNull IPassContext context);
 }

@@ -1,7 +1,10 @@
 # morpher-api
-some asm util for writing jvm bytecode transfomer
+
+Some asm util for writing jvm bytecode transformer. This is a relatively universal set of Pass interfaces.
 
 ## use jitpack
+
+link:[https://jitpack.io/#luiox/morpher-api](https://jitpack.io/#luiox/morpher-api)
 
 ```kotlin
 dependencyResolutionManagement {

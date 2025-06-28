@@ -1,7 +1,5 @@
 package com.github.luiox.morpher.transfomer;
 
-import com.github.luiox.morpher.jar.FullJarCaches;
-import com.github.luiox.morpher.jar.SimpleJarReader;
 import com.github.luiox.morpher.transformer.*;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
@@ -27,14 +25,14 @@ class DemoMethodPass extends MethodPass {
 public class PassTest {
     @Test
     public void test() {
-        PassContext context = new PassContext();
-        context.jarCaches = new FullJarCaches();
-        context.jarCaches.read(new SimpleJarReader("D:\\WorkSpace\\mc\\morpher\\morpher-testdemo\\build\\libs\\snake.jar"));
-
-        SimplePassRunner runner = new SimplePassRunner();
-        runner.addPass(new DemoClassPass());
-        runner.addPass(new DemoMethodPass());
-        runner.transform(context);
+//        PassContext context = new PassContext();
+//        context.jarCaches = new FullJarCaches();
+//        context.jarCaches.read(new SimpleJarReader("D:\\WorkSpace\\mc\\morpher\\morpher-testdemo\\build\\libs\\snake.jar"));
+//
+//        SimplePassRunner runner = new SimplePassRunner();
+//        runner.addPass(new DemoClassPass());
+//        runner.addPass(new DemoMethodPass());
+//        runner.transform(context);
 
 //        context.jarCaches.write(new SimpleJarWriter("target/classes"));
     }

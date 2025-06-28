@@ -1,15 +1,10 @@
 package com.github.luiox.morpher.transformer;
 
-import com.github.luiox.morpher.jar.IJarCaches;
-import com.github.luiox.morpher.jar.JarCachesEntry;
-import com.github.luiox.morpher.jar.JarCachesEntryType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.objectweb.asm.tree.ClassNode;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;

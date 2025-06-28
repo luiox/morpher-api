@@ -1,8 +1,7 @@
 package com.github.luiox.morpher.transformer;
 
-import com.github.luiox.morpher.jar.IJarCaches;
-import com.github.luiox.morpher.jar.JarCachesEntry;
-import com.github.luiox.morpher.jar.JarCachesEntryType;
+import com.github.luiox.morpher.model.ClassResource;
+import com.github.luiox.morpher.model.ResourceContainer;
 import org.jetbrains.annotations.NotNull;
 import org.objectweb.asm.tree.ClassNode;
 
@@ -11,21 +10,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PassContext extends BasicPassContext{
+public class NewPassContext extends BasicPassContext {
+    private final ResourceContainer container = new ResourceContainer();
 
-    public IJarCaches jarCaches;
-
-    public PassContext() {
-        this(false);
-    }
-
-    public PassContext(boolean fullLoad) {
+    public ResourceContainer getContainer() {
+        return container;
     }
 
     // class name
-    private List<String> classDeleteList = new ArrayList<>();
+    private final List<String> classDeleteList = new ArrayList<>();
     // class name -> byte[]
-    private Map<String, byte[]> classAddList = new HashMap<>();
+    private final Map<String, byte[]> classAddList = new HashMap<>();
 
     public void deleteClassNode(String className) {
         classDeleteList.add(className);
@@ -41,14 +36,12 @@ public class PassContext extends BasicPassContext{
 
     public void applyClassModify() {
         for (var className : classDeleteList) {
-            jarCaches.removeEntry(className + ".class");
+            container.remove(className + ".class");
         }
         for (var entry : classAddList.entrySet()) {
-            var e = new JarCachesEntry();
-            e.content = entry.getValue();
-            e.type = JarCachesEntryType.Class;
-            e.path = entry.getKey() + ".class";
-            jarCaches.addEntry(e);
+            var key = entry.getKey() + ".class";
+            container.addResource(key, new ClassResource(key, entry.getValue()));
         }
     }
+
 }

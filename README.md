@@ -37,12 +37,7 @@ dependencies {
 
 ## 使用示例 Example
 
-```java
-import com.github.luiox.morpher.transfomer.Pass;
-// ...
-```
-
-更多示例请参考 [morpher-example](../morpher-example)。
+示例请参考 [morpher-example](../morpher-example)。
 
 ## 贡献 Contributing
 欢迎 issue 和 PR！

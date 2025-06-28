@@ -49,3 +49,13 @@ import com.github.luiox.morpher.transfomer.Pass;
 
 ## 许可证 License
 本项目基于 MIT License 发布，详见 LICENSE 文件。
+
+## 自动打tag
+
+commit信息格式要求：
+
+```
+version x.y
+```
+
+然后就会自动打tag为 `vx.y` 版本。

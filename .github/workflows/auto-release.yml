@@ -18,7 +18,7 @@ jobs:
             echo "version=$VERSION" >> $GITHUB_OUTPUT
           else
             echo "No version bump commit, skipping."
-            exit 78
+            exit 0
           fi
       - name: Create Tag
         if: steps.get_version.outputs.version != ''

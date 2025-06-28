@@ -1,5 +1,6 @@
 package com.github.luiox.morpher.jar;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;
@@ -22,7 +23,7 @@ public class JarReader implements IJarReader {
                 JarEntry entry = entries.nextElement();
                 InputStream entryInputStream = jarFile.getInputStream(entry);
                 String entryName = entry.getName();
-                consumer.accept(entryName, entryInputStream);
+                consumer.accept(entryName, new ByteArrayInputStream(entryInputStream.readAllBytes()));
             }
         } catch (Exception e) {
             throw new IOException("jar read error, " + e.getMessage());

@@ -9,10 +9,10 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ResourceUtil {
-    private static final Logger logger = LoggerFactory.getLogger(ResourceUtil.class);
+public class ResourceHelper {
+    private static final Logger logger = LoggerFactory.getLogger(ResourceHelper.class);
 
-    private ResourceUtil() {
+    private ResourceHelper() {
     }
 
     public static void importFromClassFile(@NotNull ResourceContainer container, String filePath) {

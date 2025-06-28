@@ -7,20 +7,40 @@ import org.jetbrains.annotations.NotNull;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+/**
+ * 简单的class文件导出器。
+ * <p>
+ * 实现IResourceExporter接口，将资源容器中的ClassResource导出为class文件。
+ */
 public class SimpleClassFileExporter implements IResourceExporter {
-
+    /** 资源在容器中的路径 */
     String uri;
+    /** class文件输出路径 */
     String path;
 
+    /**
+     * 仅指定输出路径，自动导出唯一的ClassResource。
+     * @param path class文件输出路径
+     */
     public SimpleClassFileExporter(String path) {
         this(null, path);
     }
 
+    /**
+     * 指定资源路径和输出路径。
+     * @param uri 资源在容器中的路径
+     * @param path class文件输出路径
+     */
     public SimpleClassFileExporter(String uri, String path) {
         this.uri = uri;
         this.path = path;
     }
 
+    /**
+     * 导出ClassResource为class文件。
+     * @param container 资源容器
+     * @throws Exception 导出异常
+     */
     @Override
     public void exportResource(@NotNull IResourceContainer container) throws Exception {
         if (uri == null) {

@@ -17,13 +17,15 @@ import java.util.stream.Stream;
 public interface IResourceContainer extends Map<String, IResource> {
     /**
      * 添加资源到容器。
-     * @param uri 资源URI
+     *
+     * @param uri      资源URI
      * @param resource 资源对象
      */
     void addResource(String uri, @NotNull IResource resource);
 
     /**
      * 判断容器中是否存在指定URI的资源。
+     *
      * @param uri 资源URI
      * @return 是否存在
      */
@@ -31,6 +33,7 @@ public interface IResourceContainer extends Map<String, IResource> {
 
     /**
      * 使用指定导入器导入资源。
+     *
      * @param importer 资源导入器
      * @throws Exception 导入异常
      */
@@ -38,6 +41,7 @@ public interface IResourceContainer extends Map<String, IResource> {
 
     /**
      * 使用指定导出器导出资源。
+     *
      * @param exporter 资源导出器
      * @throws Exception 导出异常
      */
@@ -45,6 +49,7 @@ public interface IResourceContainer extends Map<String, IResource> {
 
     /**
      * 获取所有ClassResource的流。
+     *
      * @return ClassResource流
      */
     default Stream<ClassResource> classes() {
@@ -53,6 +58,7 @@ public interface IResourceContainer extends Map<String, IResource> {
 
     /**
      * 获取所有满足条件的ClassResource流。
+     *
      * @param keep 条件谓词，保留为条件为true的ClassResource
      * @return ClassResource流
      */
@@ -62,6 +68,7 @@ public interface IResourceContainer extends Map<String, IResource> {
 
     /**
      * 获取Manifest资源。
+     *
      * @return ManifestResource对象，未找到返回null
      */
     default ManifestResource manifest() {

@@ -1,7 +1,5 @@
 package com.github.luiox.morpher.asm.insn;
 
-import com.github.luiox.morpher.annotation.API;
-import com.github.luiox.morpher.annotation.APIStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.objectweb.asm.Handle;
@@ -20,7 +18,7 @@ import java.util.function.Predicate;
 
 import static org.objectweb.asm.Opcodes.*;
 
-@API(status = APIStatus.Stable)
+
 public class InsnUtil {
     private static final Logger logger = LoggerFactory.getLogger(InsnUtil.class);
 
@@ -39,7 +37,7 @@ public class InsnUtil {
      * @param value 数值
      * @return 指令
      */
-    @API(status = APIStatus.Stable)
+
     public static @NotNull AbstractInsnNode getIntInsn(int value) {
         if (value >= -1 && value <= 5) {
             return switch (value) {
@@ -68,7 +66,7 @@ public class InsnUtil {
      * @param value 数值
      * @return 指令
      */
-    @API(status = APIStatus.Stable)
+
     public static @NotNull AbstractInsnNode getLongInsn(long value) {
         // 因为是Long所以为了slot一样都是2，所以不用ICONST_0
         if (value == 0) {
@@ -85,7 +83,7 @@ public class InsnUtil {
      * @param value 数值
      * @return 指令
      */
-    @API(status = APIStatus.Stable)
+
     public static @NotNull AbstractInsnNode getFloatInsn(float value) {
         if (value == 0f) {
             return new InsnNode(FCONST_0);
@@ -105,7 +103,7 @@ public class InsnUtil {
      * @param value 数值
      * @return 指令
      */
-    @API(status = APIStatus.Stable)
+
     public static @NotNull AbstractInsnNode getDoubleInsn(double value) {
         if (value == 0d) {
             return new InsnNode(DCONST_0);
@@ -122,7 +120,7 @@ public class InsnUtil {
      * @param number 数值
      * @return 指令
      */
-    @API(status = APIStatus.Stable)
+
     public static @NotNull AbstractInsnNode getNumberInsn(@NotNull Number number) {
         if (number instanceof Integer || number instanceof Byte || number instanceof Short) {
             return getIntInsn(number.intValue());
@@ -143,7 +141,7 @@ public class InsnUtil {
      * @param s 字符串
      * @return 指令
      */
-    @API(status = APIStatus.Stable)
+
     public static @NotNull AbstractInsnNode getStringInsn(@NotNull String s) {
         return new LdcInsnNode(s);
     }
@@ -154,7 +152,7 @@ public class InsnUtil {
      * @param b 布尔值
      * @return 指令
      */
-    @API(status = APIStatus.Stable)
+
     public static @NotNull AbstractInsnNode getBooleanInsn(boolean b) {
         if (b) {
             return new InsnNode(ICONST_1);
@@ -168,7 +166,7 @@ public class InsnUtil {
      * @param t type
      * @return 指令
      */
-    @API(status = APIStatus.Stable)
+
     public static @NotNull AbstractInsnNode getTypeInsn(Type t) {
         return new LdcInsnNode(t);
     }
@@ -179,7 +177,7 @@ public class InsnUtil {
      * @param value 常量值
      * @return 指令
      */
-    @API(status = APIStatus.Stable)
+
     public static @NotNull AbstractInsnNode getConstantInsn(@NotNull Object value) {
         if (value instanceof Number v) {
             return getNumberInsn(v);
@@ -202,7 +200,7 @@ public class InsnUtil {
      * @param insn 指令
      * @return 常量int值
      */
-    @API(status = APIStatus.Stable)
+
     public static int getIntValue(@NotNull AbstractInsnNode insn) {
         return switch (insn.getOpcode()) {
             case ICONST_M1 -> -1;
@@ -224,7 +222,7 @@ public class InsnUtil {
      * @param insn 指令
      * @return 常量long值
      */
-    @API(status = APIStatus.Stable)
+
     public static long getLongValue(@NotNull AbstractInsnNode insn) {
         if (insn.getOpcode() == LCONST_0) {
             return 0;
@@ -245,7 +243,7 @@ public class InsnUtil {
      * @param insn 指令
      * @return 常量float值
      */
-    @API(status = APIStatus.Stable)
+
     public static float getFloatValue(@NotNull AbstractInsnNode insn) {
         return switch (insn.getOpcode()) {
             case FCONST_0 -> 0f;
@@ -262,7 +260,7 @@ public class InsnUtil {
      * @param insn 指令
      * @return 常量double值
      */
-    @API(status = APIStatus.Stable)
+
     public static double getDoubleValue(@NotNull AbstractInsnNode insn) {
         return switch (insn.getOpcode()) {
             case DCONST_0 -> 0d;
@@ -272,7 +270,7 @@ public class InsnUtil {
         };
     }
 
-    @API(status = APIStatus.Stable)
+
     public static @NotNull Number getNumberValue(@NotNull AbstractInsnNode insn) {
         if (isInteger(insn)) {
             return getIntValue(insn);
@@ -287,17 +285,17 @@ public class InsnUtil {
         throw new IllegalArgumentException("This is not a number value");
     }
 
-    @API(status = APIStatus.Stable)
+
     public static @NotNull Type getTypeValue(@NotNull AbstractInsnNode insn) {
         return (Type) ((LdcInsnNode) insn).cst;
     }
 
-    @API(status = APIStatus.Stable)
+
     public static @NotNull String getStringValue(@NotNull AbstractInsnNode insn) {
         return (String) ((LdcInsnNode) insn).cst;
     }
 
-    @API(status = APIStatus.Stable)
+
     public static @Nullable Object getConstantValue(@NotNull AbstractInsnNode insn) {
         if (isNumber(insn)) {
             return getNumberValue(insn);
@@ -321,7 +319,7 @@ public class InsnUtil {
      * @param insn 指令
      * @return 是否是常量int
      */
-    @API(status = APIStatus.Stable)
+
     public static boolean isInteger(@NotNull AbstractInsnNode insn) {
         if ((insn.getOpcode() >= ICONST_M1
                 && insn.getOpcode() <= ICONST_5)
@@ -340,7 +338,7 @@ public class InsnUtil {
      * @param insn 指令
      * @return 是否是常量long
      */
-    @API(status = APIStatus.Stable)
+
     public static boolean isLong(@NotNull AbstractInsnNode insn) {
         if (insn.getOpcode() == LCONST_0
                 || insn.getOpcode() == LCONST_1)
@@ -357,7 +355,7 @@ public class InsnUtil {
      * @param insn 指令
      * @return 是否是常量String
      */
-    @API(status = APIStatus.Stable)
+
     public static boolean isString(@NotNull AbstractInsnNode insn) {
         return insn instanceof LdcInsnNode && ((LdcInsnNode) insn).cst instanceof String;
     }
@@ -368,7 +366,7 @@ public class InsnUtil {
      * @param insn 指令
      * @return 是否是常量Type
      */
-    @API(status = APIStatus.Stable)
+
     public static boolean isType(@NotNull AbstractInsnNode insn) {
         return insn instanceof LdcInsnNode && ((LdcInsnNode) insn).cst instanceof Type;
     }
@@ -379,7 +377,7 @@ public class InsnUtil {
      * @param insn 指令
      * @return 是否是常量float
      */
-    @API(status = APIStatus.Stable)
+
     public static boolean isFloat(@NotNull AbstractInsnNode insn) {
         int opcode = insn.getOpcode();
         return (opcode >= FCONST_0 && opcode <= FCONST_2)
@@ -392,7 +390,7 @@ public class InsnUtil {
      * @param insn 指令
      * @return 是否是常量double
      */
-    @API(status = APIStatus.Stable)
+
     public static boolean isDouble(@NotNull AbstractInsnNode insn) {
         int opcode = insn.getOpcode();
         return (opcode >= DCONST_0 && opcode <= DCONST_1)
@@ -405,7 +403,7 @@ public class InsnUtil {
      * @param insn 指令
      * @return 是否是常量数值
      */
-    @API(status = APIStatus.Stable)
+
     public static boolean isNumber(@NotNull AbstractInsnNode insn) {
         return (isInteger(insn) || isLong(insn) || isFloat(insn) || isDouble(insn));
     }
@@ -425,7 +423,7 @@ public class InsnUtil {
      * @param insn 指令
      * @return 是否是return指令
      */
-    @API(status = APIStatus.Stable)
+
     public static boolean isReturn(@NotNull AbstractInsnNode insn) {
         return switch (insn.getOpcode()) {
             case ARETURN, IRETURN, FRETURN, DRETURN, LRETURN, RETURN -> true;
@@ -592,7 +590,7 @@ public class InsnUtil {
      * @param insnList 要拷贝的指令列表
      * @return 拷贝后的指令列表
      */
-    @API(status = APIStatus.Stable)
+
     public static @NotNull List<AbstractInsnNode> copyInsnList(@NotNull InsnList insnList) {
         /*
             因为ow2 asm的InsnList设计为不可变，所以无法直接深拷贝
@@ -855,7 +853,7 @@ public class InsnUtil {
         }
     }
 
-    @API(status = APIStatus.Stable)
+
     public static @NotNull InsnList insnToInsnList(@NotNull AbstractInsnNode ain) {
         InsnList list = new InsnList();
         list.add(ain);
@@ -868,7 +866,7 @@ public class InsnUtil {
         return insnList;
     }
 
-    @API(status = APIStatus.Stable)
+
     public static boolean methodInsnEquals(@NotNull MethodInsnNode methodInsnNode, int opcode,
                                            String owner, String name, String desc, boolean isInterface) {
         return methodInsnNode.getOpcode() == opcode
@@ -878,7 +876,7 @@ public class InsnUtil {
                 && methodInsnNode.itf == isInterface;
     }
 
-    @API(status = APIStatus.Stable)
+
     public static boolean methodInsnEquals(@NotNull MethodInsnNode methodInsnNode, String owner, String name, String desc) {
         return methodInsnNode.owner.equals(owner)
                 && methodInsnNode.name.equals(name)

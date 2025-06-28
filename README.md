@@ -1,6 +1,7 @@
 # morpher-api
 [![JitPack](https://jitpack.io/v/luiox/morpher-api.svg)](https://jitpack.io/#luiox/morpher-api)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![CI](https://github.com/luiox/morpher-api/actions/workflows/ci.yml/badge.svg)](https://github.com/luiox/morpher-api/actions)
 
 基于 ASM 的 JVM 字节码转换工具集，提供通用的 Pass 接口，便于开发自定义的字节码转换器。
 

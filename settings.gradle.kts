@@ -11,5 +11,6 @@ pluginManagement {
 rootProject.name = "morpher-api"
 
 include(
-    "morpher-api"
+    "morpher-api",
+    "morpher-example"
 )

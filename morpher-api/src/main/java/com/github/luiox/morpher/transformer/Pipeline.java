@@ -13,17 +13,24 @@ import java.util.List;
  * 用于组织和执行一系列代码转换或处理阶段。
  */
 public class Pipeline {
-    /** 日志记录器 */
+    /**
+     * 日志记录器
+     */
     private static final Logger logger = LoggerFactory.getLogger(Pipeline.class);
 
-    /** 流程名称 */
+    /**
+     * 流程名称
+     */
     public final String name;
 
-    /** 阶段列表 */
+    /**
+     * 阶段列表
+     */
     private final List<Phase> phases = new ArrayList<>();
 
     /**
      * 构造一个Pipeline实例。
+     *
      * @param name 流程名称
      */
     public Pipeline(String name) {
@@ -32,6 +39,7 @@ public class Pipeline {
 
     /**
      * 添加一个阶段到流程中。
+     *
      * @param phase 阶段对象
      * @return 当前Pipeline实例，便于链式调用
      */
@@ -42,6 +50,7 @@ public class Pipeline {
 
     /**
      * 获取所有阶段列表。
+     *
      * @return 阶段列表
      */
     public @NotNull List<Phase> getPhases() {
@@ -50,6 +59,7 @@ public class Pipeline {
 
     /**
      * 静态工厂方法，创建一个Pipeline实例。
+     *
      * @param name 流程名称
      * @return Pipeline实例
      */
@@ -59,6 +69,7 @@ public class Pipeline {
 
     /**
      * 依次执行所有阶段。
+     *
      * @param context Pass上下文
      */
     public void runPipeLine(IPassContext context) {

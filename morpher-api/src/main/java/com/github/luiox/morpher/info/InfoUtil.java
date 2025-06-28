@@ -14,12 +14,15 @@ import java.util.Map;
  * 该类不可实例化。
  */
 public class InfoUtil {
-    /** 私有构造方法，防止实例化 */
+    /**
+     * 私有构造方法，防止实例化
+     */
     private InfoUtil() {
     }
 
     /**
      * 构建类名到（资源位置, ClassInfo）映射表。
+     *
      * @param container 资源容器
      * @return 类名到Pair(资源位置, ClassInfo)的映射
      */
@@ -29,7 +32,8 @@ public class InfoUtil {
 
     /**
      * 构建类名到（资源位置, ClassInfo）映射表，可选择是否跳过接口。
-     * @param container 资源容器
+     *
+     * @param container      资源容器
      * @param skipInterfaces 是否跳过接口
      * @return 类名到Pair(资源位置, ClassInfo)的映射
      */
@@ -59,6 +63,7 @@ public class InfoUtil {
 
     /**
      * 构建资源位置到ClassInfo的映射表（默认不包含接口信息）。
+     *
      * @param container 资源容器
      * @return 资源位置到ClassInfo的映射
      */
@@ -68,7 +73,8 @@ public class InfoUtil {
 
     /**
      * 构建资源位置到ClassInfo的映射表。
-     * @param container 资源容器
+     *
+     * @param container      资源容器
      * @param skipInterfaces 是否跳过接口
      * @return 资源位置到ClassInfo的映射
      */

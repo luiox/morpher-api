@@ -11,17 +11,26 @@ import java.util.List;
  * 用于组织和执行一组相关的代码转换任务。
  */
 public class Phase {
-    /** 阶段名称 */
+    /**
+     * 阶段名称
+     */
     public final String name;
-    /** 阶段包含的Pass列表 */
+    /**
+     * 阶段包含的Pass列表
+     */
     private final List<AbstractPass> passes = new ArrayList<>();
-    /** 读取标志位 */
+    /**
+     * 读取标志位
+     */
     private int readFlag;
-    /** 写入标志位 */
+    /**
+     * 写入标志位
+     */
     private int writeFlag;
 
     /**
      * 构造一个Phase实例，默认读写标志为0。
+     *
      * @param name 阶段名称
      */
     public Phase(String name) {
@@ -30,8 +39,9 @@ public class Phase {
 
     /**
      * 构造一个Phase实例。
-     * @param name 阶段名称
-     * @param readFlag 读取标志
+     *
+     * @param name      阶段名称
+     * @param readFlag  读取标志
      * @param writeFlag 写入标志
      */
     public Phase(String name, int readFlag, int writeFlag) {
@@ -42,6 +52,7 @@ public class Phase {
 
     /**
      * 添加一个MethodPass到阶段。
+     *
      * @param methodPass 方法级Pass
      * @return 当前Phase实例
      */
@@ -52,6 +63,7 @@ public class Phase {
 
     /**
      * 添加一个ClassPass到阶段。
+     *
      * @param classPass 类级Pass
      * @return 当前Phase实例
      */
@@ -62,6 +74,7 @@ public class Phase {
 
     /**
      * 设置读取标志位。
+     *
      * @param readFlag 读取标志
      * @return 当前Phase实例
      */
@@ -72,6 +85,7 @@ public class Phase {
 
     /**
      * 设置写入标志位。
+     *
      * @param writeFlag 写入标志
      * @return 当前Phase实例
      */
@@ -105,6 +119,7 @@ public class Phase {
 
     /**
      * 运行当前阶段，依次初始化、执行、收尾所有Pass。
+     *
      * @param ctx Pass上下文
      */
     public void runPhase(IPassContext ctx) {
@@ -129,6 +144,7 @@ public class Phase {
 
     /**
      * 设置自定义的类节点遍历函数。
+     *
      * @param func 遍历函数实现
      */
     public static void setIterateClassNodeFunc(IterateClassNodeFunc func) {
@@ -137,7 +153,8 @@ public class Phase {
 
     /**
      * 以GlobalPass创建阶段。
-     * @param name 阶段名称
+     *
+     * @param name       阶段名称
      * @param globalPass 全局Pass
      * @return Phase实例
      */
@@ -149,9 +166,10 @@ public class Phase {
 
     /**
      * 以GlobalPass和标志位创建阶段。
-     * @param name 阶段名称
-     * @param readFlag 读取标志
-     * @param writeFlag 写入标志
+     *
+     * @param name       阶段名称
+     * @param readFlag   读取标志
+     * @param writeFlag  写入标志
      * @param globalPass 全局Pass
      * @return Phase实例
      */
@@ -163,7 +181,8 @@ public class Phase {
 
     /**
      * 以多个MethodPass创建阶段。
-     * @param name 阶段名称
+     *
+     * @param name         阶段名称
      * @param methodPasses 方法级Pass
      * @return Phase实例
      */
@@ -175,7 +194,8 @@ public class Phase {
 
     /**
      * 以多个ClassPass创建阶段。
-     * @param name 阶段名称
+     *
+     * @param name        阶段名称
      * @param classPasses 类级Pass
      * @return Phase实例
      */
@@ -187,6 +207,7 @@ public class Phase {
 
     /**
      * 以名称创建空阶段。
+     *
      * @param name 阶段名称
      * @return Phase实例
      */
@@ -196,8 +217,9 @@ public class Phase {
 
     /**
      * 以名称和标志位创建空阶段。
-     * @param name 阶段名称
-     * @param readFlag 读取标志
+     *
+     * @param name      阶段名称
+     * @param readFlag  读取标志
      * @param writeFlag 写入标志
      * @return Phase实例
      */
@@ -211,10 +233,11 @@ public class Phase {
     public interface IterateClassNodeFunc {
         /**
          * 遍历所有类节点并执行Pass。
+         *
          * @param context Pass上下文
-         * @param rflag 读取标志
-         * @param wflag 写入标志
-         * @param passes Pass列表
+         * @param rflag   读取标志
+         * @param wflag   写入标志
+         * @param passes  Pass列表
          */
         void iterate(@NotNull PassContext context,
                      int rflag,

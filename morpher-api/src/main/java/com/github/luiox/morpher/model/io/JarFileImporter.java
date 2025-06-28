@@ -16,11 +16,14 @@ import java.io.IOException;
  * 实现IResourceImporter接口，将Jar包中的内容导入到资源容器。
  */
 public class JarFileImporter implements IResourceImporter {
-    /** Jar读取器 */
+    /**
+     * Jar读取器
+     */
     IJarReader reader;
 
     /**
      * 构造方法。
+     *
      * @param reader Jar读取器
      */
     public JarFileImporter(@NotNull IJarReader reader) {
@@ -29,6 +32,7 @@ public class JarFileImporter implements IResourceImporter {
 
     /**
      * 从Jar包导入资源到容器。
+     *
      * @param container 资源容器
      * @throws Exception 导入异常
      */

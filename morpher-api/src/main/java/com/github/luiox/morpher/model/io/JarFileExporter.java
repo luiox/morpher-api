@@ -16,13 +16,18 @@ import java.util.jar.Manifest;
  * 实现IResourceExporter接口，将资源容器中的资源写入到Jar包。
  */
 public class JarFileExporter implements IResourceExporter {
-    /** 日志记录器 */
+    /**
+     * 日志记录器
+     */
     private static final Logger logger = LoggerFactory.getLogger(JarFileExporter.class);
-    /** Jar写入器 */
+    /**
+     * Jar写入器
+     */
     IJarWriter writer;
 
     /**
      * 构造方法。
+     *
      * @param writer Jar写入器
      */
     public JarFileExporter(@NotNull IJarWriter writer) {
@@ -31,7 +36,8 @@ public class JarFileExporter implements IResourceExporter {
 
     /**
      * 将单个资源写入Jar包。
-     * @param writer Jar条目写入器
+     *
+     * @param writer   Jar条目写入器
      * @param resource 资源对象
      */
     public void writeResource(IJarWriter.IEntryWriter writer, IResource resource) {
@@ -55,6 +61,7 @@ public class JarFileExporter implements IResourceExporter {
 
     /**
      * 导出资源容器中的所有资源到Jar包。
+     *
      * @param container 资源容器
      * @throws Exception 导出异常
      */

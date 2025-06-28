@@ -18,19 +18,24 @@ import java.util.function.Consumer;
  * 该类不可实例化。
  */
 public class PassHelper {
-    /** 私有构造方法，防止实例化 */
+    /**
+     * 私有构造方法，防止实例化
+     */
     private PassHelper() {
     }
 
-    /** 日志记录器 */
+    /**
+     * 日志记录器
+     */
     private static final Logger logger = LoggerFactory.getLogger(PassHelper.class);
 
     /**
      * 遍历所有ClassNode并执行指定操作。
-     * @param context Pass上下文
-     * @param infos 类信息映射
-     * @param rflag 读取标志
-     * @param wflag 写入标志
+     *
+     * @param context  Pass上下文
+     * @param infos    类信息映射
+     * @param rflag    读取标志
+     * @param wflag    写入标志
      * @param consumer 对每个ClassNode的处理逻辑
      */
     public static void iterateClassNodeWithInfo(@NotNull PassContext context,
@@ -111,9 +116,10 @@ public class PassHelper {
 
     /**
      * 打印当前处理进度。
+     *
      * @param currentClassIdx 当前处理的类索引
-     * @param totalClassSize 总类数
-     * @param className 当前类名
+     * @param totalClassSize  总类数
+     * @param className       当前类名
      */
     public static void printProgress(int currentClassIdx, int totalClassSize, String className) {
         // 清除当前行

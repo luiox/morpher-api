@@ -4,18 +4,24 @@ import java.util.Objects;
 
 /**
  * 通用的二元组（Pair）类型，用于存储两个相关联的对象。
+ *
  * @param <K> 第一个元素的类型
  * @param <V> 第二个元素的类型
  */
 public class Pair<K, V> {
-    /** 第一个元素 */
+    /**
+     * 第一个元素
+     */
     private K first;
-    /** 第二个元素 */
+    /**
+     * 第二个元素
+     */
     private V second;
 
     /**
      * 构造一个二元组。
-     * @param first 第一个元素
+     *
+     * @param first  第一个元素
      * @param second 第二个元素
      */
     public Pair(K first, V second) {
@@ -25,6 +31,7 @@ public class Pair<K, V> {
 
     /**
      * 获取第一个元素。
+     *
      * @return 第一个元素
      */
     public K getFirst() {
@@ -33,6 +40,7 @@ public class Pair<K, V> {
 
     /**
      * 设置第一个元素。
+     *
      * @param first 第一个元素
      */
     public void setFirst(K first) {
@@ -41,6 +49,7 @@ public class Pair<K, V> {
 
     /**
      * 获取第二个元素。
+     *
      * @return 第二个元素
      */
     public V getSecond() {
@@ -49,6 +58,7 @@ public class Pair<K, V> {
 
     /**
      * 设置第二个元素。
+     *
      * @param second 第二个元素
      */
     public void setSecond(V second) {
@@ -57,11 +67,12 @@ public class Pair<K, V> {
 
     /**
      * 静态工厂方法，创建一个二元组。
-     * @param first 第一个元素
+     *
+     * @param first  第一个元素
      * @param second 第二个元素
+     * @param <K>    第一个元素类型
+     * @param <V>    第二个元素类型
      * @return Pair实例
-     * @param <K> 第一个元素类型
-     * @param <V> 第二个元素类型
      */
     public static <K, V> Pair<K, V> of(K first, V second) {
         return new Pair<>(first, second);
@@ -69,6 +80,7 @@ public class Pair<K, V> {
 
     /**
      * 计算哈希值。
+     *
      * @return 哈希值
      */
     @Override
@@ -78,6 +90,7 @@ public class Pair<K, V> {
 
     /**
      * 判断两个Pair是否相等。
+     *
      * @param obj 比较对象
      * @return 是否相等
      */
@@ -98,6 +111,7 @@ public class Pair<K, V> {
 
     /**
      * 返回Pair的字符串表示。
+     *
      * @return 字符串
      */
     @Override

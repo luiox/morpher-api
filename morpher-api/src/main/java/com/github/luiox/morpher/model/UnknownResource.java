@@ -6,14 +6,19 @@ package com.github.luiox.morpher.model;
  * 用于存储无法识别类型的二进制资源。
  */
 public class UnknownResource implements IResource {
-    /** 资源路径 */
+    /**
+     * 资源路径
+     */
     String path;
-    /** 资源内容 */
+    /**
+     * 资源内容
+     */
     byte[] content;
 
     /**
      * 构造方法。
-     * @param path 资源路径
+     *
+     * @param path    资源路径
      * @param content 资源内容
      */
     public UnknownResource(String path, byte[] content) {
@@ -23,6 +28,7 @@ public class UnknownResource implements IResource {
 
     /**
      * 获取资源路径。
+     *
      * @return 路径
      */
     @Override
@@ -32,6 +38,7 @@ public class UnknownResource implements IResource {
 
     /**
      * 获取资源内容。
+     *
      * @return 字节数组
      */
     public byte[] get() {
@@ -40,6 +47,7 @@ public class UnknownResource implements IResource {
 
     /**
      * 设置资源内容。
+     *
      * @param bytes 新内容
      */
     public void set(byte[] bytes) {

@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 public interface IResourceImporter {
     /**
      * 将资源导入到指定的资源容器中。
+     *
      * @param container 资源容器
      * @throws Exception 导入过程中可能抛出的异常
      */

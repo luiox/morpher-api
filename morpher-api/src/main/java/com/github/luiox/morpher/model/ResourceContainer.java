@@ -14,7 +14,8 @@ import java.util.HashMap;
 public class ResourceContainer extends HashMap<String, IResource> implements IResourceContainer {
     /**
      * 添加资源到容器。
-     * @param uri 资源URI
+     *
+     * @param uri      资源URI
      * @param resource 资源对象
      */
     @Override
@@ -24,6 +25,7 @@ public class ResourceContainer extends HashMap<String, IResource> implements IRe
 
     /**
      * 判断容器中是否存在指定URI的资源。
+     *
      * @param uri 资源URI
      * @return 是否存在
      */
@@ -34,6 +36,7 @@ public class ResourceContainer extends HashMap<String, IResource> implements IRe
 
     /**
      * 使用指定导入器导入资源。
+     *
      * @param importer 资源导入器
      * @throws Exception 导入异常
      */
@@ -44,6 +47,7 @@ public class ResourceContainer extends HashMap<String, IResource> implements IRe
 
     /**
      * 使用指定导出器导出资源。
+     *
      * @param exporter 资源导出器
      * @throws Exception 导出异常
      */

@@ -12,11 +12,14 @@ import java.util.jar.Manifest;
  * 封装了Manifest对象的读写与类型标识。
  */
 public class ManifestResource implements IResource {
-    /** Manifest对象 */
+    /**
+     * Manifest对象
+     */
     private Manifest manifest;
 
     /**
      * 构造方法。
+     *
      * @param manifest Manifest对象
      */
     public ManifestResource(Manifest manifest) {
@@ -25,6 +28,7 @@ public class ManifestResource implements IResource {
 
     /**
      * 通过字节数组创建ManifestResource。
+     *
      * @param bytes Manifest字节内容
      * @return ManifestResource实例
      * @throws IOException 解析失败时抛出
@@ -37,6 +41,7 @@ public class ManifestResource implements IResource {
 
     /**
      * 获取资源路径。
+     *
      * @return Manifest文件名
      */
     @Override
@@ -46,6 +51,7 @@ public class ManifestResource implements IResource {
 
     /**
      * 获取Manifest对象。
+     *
      * @return Manifest对象
      */
     public Manifest get() {
@@ -54,6 +60,7 @@ public class ManifestResource implements IResource {
 
     /**
      * 设置Manifest对象。
+     *
      * @param manifest 新Manifest对象
      */
     public void set(Manifest manifest) {
@@ -62,6 +69,7 @@ public class ManifestResource implements IResource {
 
     /**
      * 获取资源类型。
+     *
      * @return ResourceType.Manifest
      */
     @Override

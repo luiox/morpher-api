@@ -11,8 +11,9 @@ import org.objectweb.asm.tree.MethodNode;
 public abstract class MethodPass implements AbstractPass {
     /**
      * 执行方法级Pass的主逻辑。
+     *
      * @param methodNode 方法节点
-     * @param context Pass上下文
+     * @param context    Pass上下文
      */
     public abstract void run(@NotNull MethodNode methodNode, @NotNull IPassContext context);
 }

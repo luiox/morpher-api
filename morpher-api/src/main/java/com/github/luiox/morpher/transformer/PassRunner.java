@@ -13,14 +13,19 @@ import java.util.List;
  * 支持批量添加Phase或Pipeline，并统一执行。
  */
 public class PassRunner {
-    /** 日志记录器 */
+    /**
+     * 日志记录器
+     */
     private static final Logger logger = LoggerFactory.getLogger(PassRunner.class);
 
-    /** 存储Phase或Pipeline对象的列表 */
+    /**
+     * 存储Phase或Pipeline对象的列表
+     */
     private List<Object> objects = new LinkedList<>();
 
     /**
      * 添加一个Phase到运行器。
+     *
      * @param phase 阶段对象
      * @return 当前PassRunner实例
      */
@@ -31,6 +36,7 @@ public class PassRunner {
 
     /**
      * 批量添加Phase到运行器。
+     *
      * @param phases 多个阶段对象
      * @return 当前PassRunner实例
      */
@@ -41,6 +47,7 @@ public class PassRunner {
 
     /**
      * 添加一个Pipeline到运行器。
+     *
      * @param pipline 流程对象
      * @return 当前PassRunner实例
      */
@@ -51,6 +58,7 @@ public class PassRunner {
 
     /**
      * 批量添加Pipeline到运行器。
+     *
      * @param pipelines 多个流程对象
      * @return 当前PassRunner实例
      */
@@ -61,6 +69,7 @@ public class PassRunner {
 
     /**
      * 执行所有已添加的Phase或Pipeline。
+     *
      * @param context Pass上下文
      */
     public void transform(PassContext context) {

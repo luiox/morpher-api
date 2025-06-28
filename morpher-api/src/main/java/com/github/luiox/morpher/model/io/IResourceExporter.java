@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 public interface IResourceExporter {
     /**
      * 将资源容器中的资源导出。
+     *
      * @param container 资源容器
      * @throws Exception 导出过程中可能抛出的异常
      */

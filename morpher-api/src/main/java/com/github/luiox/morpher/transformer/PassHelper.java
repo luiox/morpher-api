@@ -14,12 +14,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
 public class PassHelper {
-    private PassHelper(){
+    private PassHelper() {
     }
 
     private static final Logger logger = LoggerFactory.getLogger(PassHelper.class);
 
-    public static void iterateClassNodeWithInfo(@NotNull NewPassContext context,
+    public static void iterateClassNodeWithInfo(@NotNull PassContext context,
                                                 @NotNull Map<String, ClassInfo> infos,
                                                 int rflag,
                                                 int wflag,
@@ -66,7 +66,7 @@ public class PassHelper {
 
                     try {
                         classNode.accept(classWriter);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         logger.info("error when transform class: {}", classNode.name);
                         e.printStackTrace();
                     }

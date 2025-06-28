@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class NewPassContext extends BasicPassContext {
+public class PassContext extends BasicPassContext {
     private final ResourceContainer container = new ResourceContainer();
 
     public ResourceContainer getContainer() {

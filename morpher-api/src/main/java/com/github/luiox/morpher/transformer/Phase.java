@@ -71,7 +71,7 @@ public class Phase {
     }
 
     public void runPhase(IPassContext ctx) {
-        if (!(ctx instanceof NewPassContext context)) {
+        if (!(ctx instanceof PassContext context)) {
             throw new IllegalArgumentException("ctx must be NewPassContext");
         }
 
@@ -123,7 +123,7 @@ public class Phase {
     }
 
     public interface IterateClassNodeFunc {
-        void iterate(@NotNull NewPassContext context,
+        void iterate(@NotNull PassContext context,
                      int rflag,
                      int wflag, List<AbstractPass> passes);
     }

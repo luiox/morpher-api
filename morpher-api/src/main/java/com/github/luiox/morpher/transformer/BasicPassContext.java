@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 
-public class BasicPassContext implements IPassContext{
+public class BasicPassContext implements IPassContext {
     // pass声明周期操作
     private Map<AbstractPass, LifecycleHook> lifecycleHookMap = new HashMap<>();
 

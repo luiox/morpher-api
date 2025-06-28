@@ -37,7 +37,7 @@ public class PassRunner {
         return this;
     }
 
-    public void transform(NewPassContext context) {
+    public void transform(PassContext context) {
         for (Object object : objects) {
             if (object instanceof Phase phase) {
                 System.out.println("-".repeat(120));

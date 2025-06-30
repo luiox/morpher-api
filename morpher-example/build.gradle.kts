@@ -16,6 +16,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
 
     implementation("com.github.luiox:morpher-api:v1.6")
+
+//    implementation(project(":morpher-api"))
 }
 
 tasks{

@@ -10,15 +10,9 @@ pluginManagement {
 
 rootProject.name = "morpher-api"
 
-val isJitPack by extra {
-    System.getenv("CI") != null || System.getenv("JITPACK_IO") != null || System.getenv("TRAVIS") != null
-}
+include(
+    "morpher-api",
+    "morpher-example"
+)
 
-println("Is JitPack build: $isJitPack") // 调试用，看是否判断正确
-
-include("morpher-api")
-
-if(!isJitPack){
-    include("morpher-example")
-}
 

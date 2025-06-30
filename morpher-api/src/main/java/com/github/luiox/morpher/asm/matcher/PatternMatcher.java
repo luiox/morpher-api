@@ -5,10 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.InsnList;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 指令模式匹配器
@@ -102,5 +99,20 @@ public class PatternMatcher {
             original.remove(ain);
         }
         return builder.getInsnList();
+    }
+
+    /**
+     * 从多个匹配器中创建一个新的PatternMatcher
+     * @param matchers 多个匹配器
+     * @return 一个新的PatternMatcher实例
+     */
+    public static @NotNull PatternMatcher from(PatternMatcher @NotNull ... matchers) {
+        PatternMatcher result = new PatternMatcher();
+
+        for (PatternMatcher matcher : matchers) {
+            result.rules.addAll(matcher.rules);
+        }
+
+        return  result;
     }
 }

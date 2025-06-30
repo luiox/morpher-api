@@ -10,6 +10,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 
 public class BasicPassContext implements IPassContext {
+
+    @Override
+    public PassHelper getPassHelper() {
+        return PassHelperImpl.getInstance();
+    }
+
     // pass声明周期操作
     private Map<AbstractPass, LifecycleHook> lifecycleHookMap = new HashMap<>();
 

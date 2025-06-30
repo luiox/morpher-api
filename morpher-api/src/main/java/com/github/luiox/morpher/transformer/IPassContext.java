@@ -35,5 +35,10 @@ public interface IPassContext {
      */
     void setPrevPass(@NotNull AbstractPass pass);
 
-
+    /**
+     * 获取当前的PassHelper
+     *
+     * @return PassHelper
+     */
+    PassHelper getPassHelper();
 }

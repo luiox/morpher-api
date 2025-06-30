@@ -1,6 +1,5 @@
 package com.github.luiox.morpher.transformer;
 
-import com.github.luiox.morpher.info.InfoUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -98,10 +97,11 @@ public class Phase {
 
     static {
         iterateClassNodeFunc = (context, rflag, wflag, passes) -> {
+            var helper = context.getPassHelper();
             // 构建一下索引
-            var infos = InfoUtil.buildClassInfo(context.getContainer());
+            var infos = helper.buildClassInfo(context);
             // 以索引的方式迭代
-            PassHelper.iterateClassNodeWithInfo(context, infos, rflag, wflag, classNode -> {
+            helper.iterateClassNodeWithInfo(context, infos, rflag, wflag, classNode -> {
                 for (var pass : passes) {
                     if (pass instanceof MethodPass methodPass) {
                         for (var methodNode : classNode.methods) {
@@ -120,13 +120,9 @@ public class Phase {
     /**
      * 运行当前阶段，依次初始化、执行、收尾所有Pass。
      *
-     * @param ctx Pass上下文
+     * @param context Pass上下文
      */
-    public void runPhase(IPassContext ctx) {
-        if (!(ctx instanceof PassContext context)) {
-            throw new IllegalArgumentException("ctx must be NewPassContext");
-        }
-
+    public void runPhase(IPassContext context) {
         for (var passes : passes) {
             passes.doInitialization(context);
         }
@@ -239,7 +235,7 @@ public class Phase {
          * @param wflag   写入标志
          * @param passes  Pass列表
          */
-        void iterate(@NotNull PassContext context,
+        void iterate(@NotNull IPassContext context,
                      int rflag,
                      int wflag, List<AbstractPass> passes);
     }

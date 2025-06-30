@@ -1,6 +1,7 @@
 package com.github.luiox.morpher.transformer;
 
 import com.github.luiox.morpher.util.TimeUtil;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -72,7 +73,7 @@ public class PassRunner {
      *
      * @param context Pass上下文
      */
-    public void transform(PassContext context) {
+    public void transform(@NotNull IPassContext context) {
         for (Object object : objects) {
             if (object instanceof Phase phase) {
                 System.out.println("-".repeat(120));

@@ -34,4 +34,4 @@ jobs:
     - name: Make gradlew executable
       run: chmod +x ./gradlew
     - name: Build with Gradle Wrapper
-      run: ./gradlew build
+      run: ./gradlew build :morpher-api:build

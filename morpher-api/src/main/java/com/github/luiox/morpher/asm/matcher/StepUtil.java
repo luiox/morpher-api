@@ -7,6 +7,7 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.VarInsnNode;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 /**
@@ -595,6 +596,22 @@ public class StepUtil {
     @Contract(value = "_, _, _ -> new", pure = true)
     public static @NotNull IMatchStep invokevirtual(@NotNull String owner, @NotNull String name, @NotNull String desc) {
         return new MethodStep.SimpleMethodStep(Opcodes.INVOKEVIRTUAL, owner, name, desc);
+    }
+
+    // Step结合子辅助方法
+    @Contract("_ -> new")
+    public static @NotNull AndStep andStep(IMatchStep... steps) {
+        return AndStep.of(List.of(steps));
+    }
+
+    @Contract("_ -> new")
+    public static @NotNull OrStep orStep(IMatchStep... steps) {
+        return OrStep.of(List.of(steps));
+    }
+
+    @Contract(value = "_ -> new", pure = true)
+    public static @NotNull NotStep notStep(IMatchStep step) {
+        return NotStep.of(step);
     }
 }
 

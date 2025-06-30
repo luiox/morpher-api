@@ -45,7 +45,7 @@ tasks {
             create<MavenPublication>("mavenJava") {
                 groupId = "com.github.luiox"
                 artifactId = "morpher-api"
-                version = "1.6"
+                version = "1.8"
 
                 artifact(jar)
 //                from(components["java"])

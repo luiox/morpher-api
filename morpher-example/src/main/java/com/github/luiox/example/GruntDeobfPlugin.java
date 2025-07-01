@@ -16,6 +16,11 @@ public class GruntDeobfPlugin implements IPassPlugin {
 
     @Override
     public List<AbstractPass> getAvailablePasses() {
-        return List.of(new GruntConstantFolder());
+        return List.of(
+//                new GruntConstantFolder(),
+                new DeadCodeRemover(),
+                new BasicXorStrObf(),
+                new UnusedLabelRemover()
+        );
     }
 }

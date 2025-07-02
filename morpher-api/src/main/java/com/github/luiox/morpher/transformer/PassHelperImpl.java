@@ -19,13 +19,13 @@ import java.util.function.Consumer;
 public class PassHelperImpl implements PassHelper {
     private static final Logger logger = LoggerFactory.getLogger(PassHelperImpl.class);
 
+    private static PassHelperImpl Instance;
+
     /**
      * 获取当前PassHelperImpl的实例。
      *
      * @return PassHelperImpl实例
      */
-    private static PassHelperImpl Instance;
-
     public static PassHelperImpl getInstance() {
         if (Instance == null) {
             Instance = new PassHelperImpl();

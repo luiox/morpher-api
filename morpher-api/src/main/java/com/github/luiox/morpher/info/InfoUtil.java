@@ -60,43 +60,4 @@ public class InfoUtil {
 
         return classInfos;
     }
-
-    /**
-     * 构建资源位置到ClassInfo的映射表（默认不包含接口信息）。
-     *
-     * @param container 资源容器
-     * @return 资源位置到ClassInfo的映射
-     */
-    public static @NotNull Map<String, ClassInfo> buildClassInfo(@NotNull ResourceContainer container) {
-        return buildClassInfo(container, false);
-    }
-
-    /**
-     * 构建资源位置到ClassInfo的映射表。
-     *
-     * @param container      资源容器
-     * @param skipInterfaces 是否跳过接口
-     * @return 资源位置到ClassInfo的映射
-     */
-    public static @NotNull Map<String, ClassInfo> buildClassInfo(@NotNull ResourceContainer container,
-                                                                 boolean skipInterfaces) {
-        Map<String, ClassInfo> classInfos = new HashMap<>();
-
-        container.classes().forEach(classResource -> {
-            var bytes = classResource.get();
-            ClassReader classReader = new ClassReader(bytes);
-            classReader.getClassName();
-            var interfaces = skipInterfaces ? null : List.of(classReader.getInterfaces());
-            classInfos.put(classResource.getLocation(),
-                    new ClassInfo(classReader.getClassName(),
-                            classReader.getAccess(),
-                            classReader.getSuperName(),
-                            interfaces,
-                            classReader.readShort(6)
-                    )
-            );
-        });
-
-        return classInfos;
-    }
 }

@@ -1,4 +1,4 @@
-package com.github.luiox.passes;
+package com.github.luiox.passes.optimize;
 
 import com.github.luiox.morpher.transformer.IPassContext;
 import com.github.luiox.morpher.transformer.MethodPass;

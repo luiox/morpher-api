@@ -3,7 +3,7 @@ package com.github.luiox.passes.deobfuscate;
 import com.github.luiox.morpher.plugin.IPassPlugin;
 import com.github.luiox.morpher.plugin.PluginInfo;
 import com.github.luiox.morpher.transformer.AbstractPass;
-import com.github.luiox.passes.UnusedLabelRemover;
+import com.github.luiox.passes.optimize.UnusedLabelRemover;
 import com.github.luiox.passes.obfuscate.BasicXorStrObf;
 import com.github.luiox.passes.optimize.DeadCodeRemover;
 

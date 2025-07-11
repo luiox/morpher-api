@@ -9,6 +9,7 @@ import com.github.luiox.passes.deobfuscate.Sample001Pass1;
 import com.github.luiox.passes.deobfuscate.Sample001Pass2;
 import com.github.luiox.passes.deobfuscate.Sample001Pass3;
 import com.github.luiox.passes.optimize.DeadCodeRemover;
+import com.github.luiox.passes.optimize.UnusedLabelRemover;
 import org.objectweb.asm.ClassWriter;
 
 public class Main {

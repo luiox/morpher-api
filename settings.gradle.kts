@@ -12,7 +12,7 @@ rootProject.name = "morpher-api"
 
 include(
     "morpher-api",
-    "morpher-example"
+    "morpher-passes"
 )
 
 

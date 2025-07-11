@@ -43,12 +43,12 @@ tasks {
     publishing {
         publications {
             create<MavenPublication>("mavenJava") {
-                groupId = "com.github.luiox"
                 artifactId = "morpher-api"
-                version = "1.8"
+                groupId = project.group.toString()
+                version = project.version.toString()
 
                 artifact(jar)
-//                from(components["java"])
+
                 pom.withXml {
                     val dependenciesNode = asNode().appendNode("dependencies")
 

@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.github.luiox"
-version = "1.6"
+version = "1.8"
 
 subprojects {
     apply(plugin = "java")

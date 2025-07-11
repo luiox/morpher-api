@@ -1,4 +1,4 @@
-package com.github.luiox.example;
+package com.github.luiox.passes.obfuscate;
 
 import com.github.luiox.morpher.asm.insn.InsnBuilder;
 import com.github.luiox.morpher.asm.insn.InsnUtil;

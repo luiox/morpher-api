@@ -1,10 +1,14 @@
-package com.github.luiox.example;
+package com.github.luiox.passes;
 
 import com.github.luiox.morpher.model.io.ResourceHelper;
 import com.github.luiox.morpher.transformer.PassContext;
 import com.github.luiox.morpher.transformer.PassRunner;
 import com.github.luiox.morpher.transformer.Phase;
 import com.github.luiox.morpher.transformer.Pipeline;
+import com.github.luiox.passes.deobfuscate.Sample001Pass1;
+import com.github.luiox.passes.deobfuscate.Sample001Pass2;
+import com.github.luiox.passes.deobfuscate.Sample001Pass3;
+import com.github.luiox.passes.optimize.DeadCodeRemover;
 import org.objectweb.asm.ClassWriter;
 
 public class Main {

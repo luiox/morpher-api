@@ -15,7 +15,7 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:${properties["junit_version"] as String}"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 
-    implementation("com.github.luiox:morpher-api:v1.6")
+    implementation("com.github.luiox:morpher-api:v1.8")
 //    implementation(project(":morpher-api"))
 }
 

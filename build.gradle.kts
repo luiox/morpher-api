@@ -47,19 +47,40 @@ subprojects {
 
                 from(components["java"])
 
-                pom.withXml {
-                    val dependenciesNode = asNode().appendNode("dependencies")
+                pom {
+                    name.set("${project.group}:${project.name}")
+                    description.set(project.description ?: "")
+                    url.set("https://github.com/luiox/morpher-api")
 
-                    // 遍历项目依赖并添加到 POM
-                    project.configurations.implementation.get().allDependencies.forEach { dep ->
-                        if (dep.group != null) { // 过滤掉没有 group 的依赖（如本地项目）
-                            val dependencyNode = dependenciesNode.appendNode("dependency")
-                            dependencyNode.appendNode("groupId", dep.group)
-                            dependencyNode.appendNode("artifactId", dep.name)
-                            dependencyNode.appendNode("version", dep.version ?: "")
+                    licenses {
+                        license {
+                            name.set("MIT License")
+                            url.set("https://github.com/luiox/morpher-api/blob/main/LICENSE")
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id.set("luiox")
+                            name.set("Canrad")
+                            email.set("1517807724@qq.com")
                         }
                     }
                 }
+
+//                pom.withXml {
+//                    val dependenciesNode = asNode().appendNode("dependencies")
+//
+//                    // 遍历项目依赖并添加到 POM
+//                    project.configurations.implementation.get().allDependencies.forEach { dep ->
+//                        if (dep.group != null) { // 过滤掉没有 group 的依赖（如本地项目）
+//                            val dependencyNode = dependenciesNode.appendNode("dependency")
+//                            dependencyNode.appendNode("groupId", dep.group)
+//                            dependencyNode.appendNode("artifactId", dep.name)
+//                            dependencyNode.appendNode("version", dep.version ?: "")
+//                        }
+//                    }
+//                }
             }
         }
     }

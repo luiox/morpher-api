@@ -96,5 +96,12 @@ allprojects {
             url = uri("https://www.jitpack.io")
         }
     }
+
+    tasks.withType<PublishToMavenRepository> {
+        onlyIf {
+            // 避免重复发布相同的构件
+            repository.name != "MavenLocal" || project.hasProperty("publishToLocal")
+        }
+    }
 }
 

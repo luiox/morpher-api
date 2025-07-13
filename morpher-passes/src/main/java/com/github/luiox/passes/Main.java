@@ -17,6 +17,9 @@ public class Main {
         PassContext context = new PassContext();
         ResourceHelper.importFromJar(context.getContainer(), "sample-001.jar");
 
+        // 添加依赖库路径，如果不加的话，可能会导致找不到类
+//        context.getPassHelper().addLibPath("dep");
+
         PassRunner runner = new PassRunner();
         runner.add(Pipeline.of("test")
                 .add(Phase.of("test1", 0, ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS)

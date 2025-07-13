@@ -15,4 +15,6 @@ public interface PassHelper {
                                   int rflag,
                                   int wflag,
                                   @NotNull Consumer<ClassNode> consumer);
+
+    void addLibPath(@NotNull String path);
 }

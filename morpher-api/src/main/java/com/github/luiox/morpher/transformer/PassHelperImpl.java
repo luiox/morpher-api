@@ -1,5 +1,7 @@
 package com.github.luiox.morpher.transformer;
 
+import com.github.luiox.morpher.asm.writer.CommonSuperClassProvider;
+import com.github.luiox.morpher.asm.writer.DelegatingSuperClassWriter;
 import com.github.luiox.morpher.info.ClassInfo;
 import com.github.luiox.morpher.model.ClassResource;
 import com.github.luiox.morpher.model.ResourceContainer;
@@ -32,6 +34,17 @@ public class PassHelperImpl implements PassHelper {
         }
         return Instance;
     }
+
+    private CommonSuperClassProvider superClassProvider;
+
+    @Override
+    public void addLibPath(@NotNull String path) {
+        if (superClassProvider == null) {
+            superClassProvider = new CommonSuperClassProvider();
+        }
+        superClassProvider.scan(path);
+    }
+
 
     /**
      * 遍历所有ClassNode并执行指定操作。
@@ -86,8 +99,11 @@ public class PassHelperImpl implements PassHelper {
                     consumer.accept(classNode);
                     // 根据参数写回去
                     ClassWriter classWriter;
-
-                    classWriter = new ClassWriter(wflag);
+                    if (superClassProvider == null) {
+                        classWriter = new ClassWriter(wflag);
+                    } else {
+                        classWriter = new DelegatingSuperClassWriter(superClassProvider, rflag);
+                    }
 
                     try {
                         classNode.accept(classWriter);

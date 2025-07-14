@@ -9,9 +9,14 @@ import org.objectweb.asm.tree.analysis.Analyzer;
 import org.objectweb.asm.tree.analysis.BasicInterpreter;
 import org.objectweb.asm.tree.analysis.BasicValue;
 import org.objectweb.asm.tree.analysis.Frame;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @PassInfo(name = "DeadCodeRemover", description = "移除无用代码")
 public class DeadCodeRemover extends MethodPass {
+
+    private static final Logger logger = LoggerFactory.getLogger(DeadCodeRemover.class);
+    int count = 0;
 
     @Override
     public void run(@NotNull MethodNode methodNode, @NotNull IPassContext context) {
@@ -32,11 +37,16 @@ public class DeadCodeRemover extends MethodPass {
                         && !(insnNodes[i] instanceof LineNumberNode)
                         && !(insnNodes[i] instanceof FrameNode)) {
                     methodNode.instructions.remove(insnNodes[i]);
+                    count++;
                 }
             }
-
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Failed to analyze method: {} in class: {}", methodNode.name, context.currentClass().name, e);
         }
+    }
+
+    @Override
+    public void doFinalization(@NotNull IPassContext context) {
+        logger.info("[DeadCodeRemover] remove {} dead code instructions", count);
     }
 }

@@ -5,6 +5,8 @@ import com.github.luiox.morpher.transformer.MethodPass;
 import com.github.luiox.morpher.transformer.PassInfo;
 import org.jetbrains.annotations.NotNull;
 import org.objectweb.asm.tree.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,11 +14,14 @@ import java.util.Map;
 @PassInfo(name = "UnusedLabelRemover", description = "清除没有使用到的LabelNode")
 public class UnusedLabelRemover extends MethodPass {
 
+    private static final Logger logger = LoggerFactory.getLogger(UnusedLabelRemover.class);
+    int count = 0;
+
     @Override
     public void run(@NotNull MethodNode methodNode, @NotNull IPassContext context) {
         Map<LabelNode, Boolean> labelToUsed = new HashMap<>();
         // 扫描指令，搜集表，和确定引用情况
-        for(var insn : methodNode.instructions) {
+        for (var insn : methodNode.instructions) {
             if (insn instanceof JumpInsnNode jumpInsnNode) {
                 labelToUsed.put(jumpInsnNode.label, true);
             } else if (insn instanceof LineNumberNode lineNumberNode) {
@@ -69,5 +74,12 @@ public class UnusedLabelRemover extends MethodPass {
                 methodNode.instructions.remove(entry.getKey());
             }
         }
+        // 记录移除的数量
+        count += labelToUsed.size();
+    }
+
+    @Override
+    public void doFinalization(@NotNull IPassContext context) {
+        logger.info("[UnusedLabelRemover] Removed {} unused labels", count);
     }
 }
